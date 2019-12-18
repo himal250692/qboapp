@@ -1,0 +1,73 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "ea2e6006ae8c4dee2bc8b53953804656",
+    "packages": [
+        {
+            "name": "quickbooks/v3-php-sdk",
+            "version": "v5.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/intuit/QuickBooks-V3-PHP-SDK.git",
+                "reference": "91050cbdc0e82e5f6df8bacc40bfe6e1b232a30e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/intuit/QuickBooks-V3-PHP-SDK/zipball/91050cbdc0e82e5f6df8bacc40bfe6e1b232a30e",
+                "reference": "91050cbdc0e82e5f6df8bacc40bfe6e1b232a30e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "suggest": {
+                "ext-curl": "Uses Curl to make HTTP Requests",
+                "guzzlehttp/guzzle": "Uses Guzzle to make HTTP Requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "QuickBooksOnline\\API\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "hlu2",
+                    "email": "Hao_Lu@intuit.com"
+                }
+            ],
+            "description": "The Official PHP SDK for QuickBooks Online Accounting API",
+            "homepage": "http://developer.intuit.com",
+            "keywords": [
+                "api",
+                "http",
+                "quickbooks",
+                "rest",
+                "smallbusiness"
+            ],
+            "time": "2019-11-27T02:46:01+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "^7.1.3"
+    },
+    "platform-dev": []
+}
