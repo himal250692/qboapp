@@ -33,8 +33,8 @@ $dataService = DataService::Configure(array(
 			$authorizationCodeUrl = $OAuth2LoginHelper->getAuthorizationCodeURL();
 			header("Location: ".$authorizationCodeUrl); exit;
 		} else {
-			$authorizationCode = @$_GET['code'];
-			$RealmID = @$_GET['realmId'];
+			echo $authorizationCode = @$_GET['code'];
+			echo $RealmID = @$_GET['realmId'];
 			$accessTokenObj = $OAuth2LoginHelper->exchangeAuthorizationCodeForToken($authorizationCode, $RealmID);
 			$dataService->updateOAuth2Token($accessTokenObj);
 			echo "<pre/>"; print_r($accessTokenObj); 
