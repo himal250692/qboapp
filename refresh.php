@@ -29,14 +29,16 @@ $dataService = DataService::Configure(array(
   'QBORealmID'=>$QBORealmID,
   'accessTokenKey' => $accessTokenKey,
   'refreshTokenKey' => $refreshTokenKey,
-  'baseUrl' => "development"
+  'baseUrl' => "production"
 ));
 
 $OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
 
 echo  "<pre/>"; 
-print_r($OAuth2LoginHelper); die;
+print_r($OAuth2LoginHelper); 
 $refreshedAccessTokenObj = $OAuth2LoginHelper->refreshToken();
 $error = $OAuth2LoginHelper->getLastError();
 
+print_r($refreshedAccessTokenObj); 
+print_r($error); 
 die;

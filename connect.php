@@ -23,7 +23,7 @@ $dataService = DataService::Configure(array(
   'ClientSecret' => $quickbooks_consumer_secret,
   'RedirectURI' => "https://qboapp.herokuapp.com/connect.php",
   'scope' => "com.intuit.quickbooks.accounting openid email address",
-  'baseUrl' => "producttion"
+  'baseUrl' => "production"
 ));
 
 		$OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
