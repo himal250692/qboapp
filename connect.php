@@ -12,8 +12,8 @@ use QuickBooksOnline\API\Core\OAuth\OAuth2\OAuth2LoginHelper;
 
 
 
-$quickbooks_consumer_key = "ABsjOTag8st1BgOmLZ6LOBLqKcUtYbt4CYO5gTkOfy50It2PXS";
-$quickbooks_consumer_secret = "3wTaA9zqkCEv2JT9RX0r4s310xBMBcgnv6C04bdM";
+$quickbooks_consumer_key = "ABiqJ9K5jJibfb8LzBmCggUxzc8Pdrm7C7e49FH8tcs9sw7PzA";
+$quickbooks_consumer_secret = "Ru3kfFeisbOFpjnPYGR1eEqjA9j9leBwv9114LQF";
 
 
 
@@ -22,8 +22,8 @@ $dataService = DataService::Configure(array(
   'ClientID' => $quickbooks_consumer_key,
   'ClientSecret' => $quickbooks_consumer_secret,
   'RedirectURI' => "https://qboapp.herokuapp.com/connect.php",
-  'scope' => "com.intuit.quickbooks.accounting",
-  'baseUrl' => "development"
+  'scope' => "com.intuit.quickbooks.accounting openid email address",
+  'baseUrl' => "producttion"
 ));
 
 		$OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();

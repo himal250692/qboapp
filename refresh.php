@@ -15,23 +15,28 @@ use QuickBooksOnline\API\Core\OAuth\OAuth2\OAuth2LoginHelper;
 
 
 
-$quickbooks_consumer_key = "ABsjOTag8st1BgOmLZ6LOBLqKcUtYbt4CYO5gTkOfy50It2PXS";
-$quickbooks_consumer_secret = "3wTaA9zqkCEv2JT9RX0r4s310xBMBcgnv6C04bdM";
-
-
+$quickbooks_consumer_key = "ABiqJ9K5jJibfb8LzBmCggUxzc8Pdrm7C7e49FH8tcs9sw7PzA";
+$quickbooks_consumer_secret = "Ru3kfFeisbOFpjnPYGR1eEqjA9j9leBwv9114LQF";
 
 $QBORealmID = $_GET['id'];
-$refreshTokenKey = $_GET['key']; 
+$refreshTokenKey = $_GET['refresh'];
+$accessTokenKey = $_GET['access'];
 
+$dataService = DataService::Configure(array(
+  'auth_mode' => 'oauth2',
+  'ClientID' => $quickbooks_consumer_key,
+  'ClientSecret' => $quickbooks_consumer_secret,
+  'QBORealmID'=>$QBORealmID,
+  'accessTokenKey' => $accessTokenKey,
+  'refreshTokenKey' => $refreshTokenKey,
+  'baseUrl' => "development"
+));
 
-//The first parameter of OAuth2LoginHelper is the ClientID, second parameter is the client Secret
-$oauth2LoginHelper = new OAuth2LoginHelper($quickbooks_consumer_key,$quickbooks_consumer_secret);
-$accessTokenObj = $oauth2LoginHelper->
-                    refreshAccessTokenWithRefreshToken($refreshTokenKey);
-$accessTokenValue = $accessTokenObj->getAccessToken();
-$refreshTokenValue = $accessTokenObj->getRefreshToken();
-echo "Access Token is:";
-print_r($accessTokenValue);
-echo "RefreshToken Token is:";
-print_r($refreshTokenValue);
+$OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
+
+echo  "<pre/>"; 
+print_r($OAuth2LoginHelper); die;
+$refreshedAccessTokenObj = $OAuth2LoginHelper->refreshToken();
+$error = $OAuth2LoginHelper->getLastError();
+
 die;
