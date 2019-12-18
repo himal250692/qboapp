@@ -36,9 +36,23 @@ $OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
 
 echo  "<pre/>"; 
 print_r($OAuth2LoginHelper); 
+
+$OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
 $refreshedAccessTokenObj = $OAuth2LoginHelper->refreshToken();
 $error = $OAuth2LoginHelper->getLastError();
 
-print_r($refreshedAccessTokenObj); 
-print_r($error); 
-die;
+if($error){
+    echo "<pre/>error"; print_r($error);
+} else {
+    $dataService->updateOAuth2Token($refreshedAccessTokenObj);
+    $accessTokenValue = $refreshedAccessTokenObj->getAccessToken();
+    $refreshTokenValue  = $refreshedAccessTokenObj->getRefreshToken();
+    $accessTokenExpiresAt  = $refreshedAccessTokenObj->getAccessTokenExpiresAt();
+    $accessTokenExpiresAtStr = strtotime($accessTokenExpiresAt);
+    $accessTokenKey = $accessTokenValue;
+    echo "UPDATE `connections` SET `access_token_value` = '" . $accessTokenKey . "', `refresh_token_value` = '" . $refreshTokenValue . "', `accessTokenExpiresAt` = '" . $accessTokenExpiresAt . "' WHERE `realm_id`='{$QBORealmID}' AND client_id='$client_id'";
+}
+
+
+
+
