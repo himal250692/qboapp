@@ -2,6 +2,9 @@
 
 require __DIR__.'/vendor/autoload.php';
 
+error_reporting(E_ALL);
+ini_set('display_errrors',2);
+
 
 use QuickBooksOnline\API\Core\ServiceContext;
 use QuickBooksOnline\API\DataService\DataService;
