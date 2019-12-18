@@ -34,11 +34,14 @@ $dataService = DataService::Configure(array(
 
 $OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
 
-echo  "<pre/>"; 
+echo  "<pre/>ww"; 
 print_r($OAuth2LoginHelper); 
 
 $OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
 $refreshedAccessTokenObj = $OAuth2LoginHelper->refreshToken();
+
+echo  "<pre/>33d"; 
+print_r($refreshedAccessTokenObj); 
 $error = $OAuth2LoginHelper->getLastError();
 
 if($error){
