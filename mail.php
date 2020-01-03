@@ -26,6 +26,9 @@ define('DB_NAME',$db);
 
 $connection = new Sql();
 $connectStr = $connection->connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+$payLoad = file_get_contents("php://input");
+
 $request = json_encode($_REQUEST);
 
                 
@@ -33,7 +36,7 @@ $CommonFunction = new CommonFunction($connectStr);
 
 
 $insertData = array();
-$insertData['log'] = $request;
+$insertData['log'] = $payLoad;
 $CommonFunction->insertData('logs',$insertData);
 
 
