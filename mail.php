@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors',2);
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
