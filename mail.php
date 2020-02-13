@@ -27,7 +27,7 @@ define('DB_NAME',$db);
 $webhook_token  = 'e300ba3d-bb27-480d-959c-701c71cfa429';
 if (isset($_SERVER['HTTP_INTUIT_SIGNATURE']) && !empty($_SERVER['HTTP_INTUIT_SIGNATURE'])) {
 	$payLoad = file_get_contents("php://input");
-	if ($this->isValidJSON($payLoad)) {
+	
 		$payloadHash = hash_hmac('sha256', $payLoad, $webhook_token);
         $singatureHash = bin2hex(base64_decode($_SERVER['HTTP_INTUIT_SIGNATURE']));
         
@@ -39,7 +39,7 @@ $CommonFunction->insertData('logs',$insertData);
         if($payloadHash == $singatureHash) {
             
         }
-    }    
+        
 }
 
 
