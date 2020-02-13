@@ -23,6 +23,11 @@ define('DB_USER',$username);
 define('DB_PASS',$password);
 define('DB_NAME',$db);
 
+$connection = new Sql();
+$connectStr = $connection->connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                
+$CommonFunction = new CommonFunction($connectStr);
+
 
 $webhook_token  = 'e300ba3d-bb27-480d-959c-701c71cfa429';
 if (isset($_SERVER['HTTP_INTUIT_SIGNATURE']) && !empty($_SERVER['HTTP_INTUIT_SIGNATURE'])) {
@@ -33,7 +38,7 @@ if (isset($_SERVER['HTTP_INTUIT_SIGNATURE']) && !empty($_SERVER['HTTP_INTUIT_SIG
         
         $insertData = array();
 $insertData['log'] = $singatureHash;
-$CommonFunction = new CommonFunction($connectStr);
+
 $CommonFunction->insertData('logs',$insertData);
 
         if($payloadHash == $singatureHash) {
@@ -43,15 +48,12 @@ $CommonFunction->insertData('logs',$insertData);
 }
 
 
-$connection = new Sql();
-$connectStr = $connection->connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 $payLoad = file_get_contents("php://input");
 
 $request = json_encode($_REQUEST);
 
-                
-$CommonFunction = new CommonFunction($connectStr);
+
 
 
 $insertData = array();
