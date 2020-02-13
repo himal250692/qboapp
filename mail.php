@@ -33,6 +33,7 @@ if (isset($_SERVER['HTTP_INTUIT_SIGNATURE']) && !empty($_SERVER['HTTP_INTUIT_SIG
         
         $insertData = array();
 $insertData['log'] = $singatureHash;
+$CommonFunction = new CommonFunction($connectStr);
 $CommonFunction->insertData('logs',$insertData);
 
         if($payloadHash == $singatureHash) {
