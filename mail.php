@@ -24,6 +24,24 @@ define('DB_PASS',$password);
 define('DB_NAME',$db);
 
 
+$webhook_token  = 'e300ba3d-bb27-480d-959c-701c71cfa429';
+if (isset($_SERVER['HTTP_INTUIT_SIGNATURE']) && !empty($_SERVER['HTTP_INTUIT_SIGNATURE'])) {
+	$payLoad = file_get_contents("php://input");
+	if ($this->isValidJSON($payLoad)) {
+		$payloadHash = hash_hmac('sha256', $payLoad, $webhook_token);
+        $singatureHash = bin2hex(base64_decode($_SERVER['HTTP_INTUIT_SIGNATURE']));
+        
+        $insertData = array();
+$insertData['log'] = $singatureHash;
+$CommonFunction->insertData('logs',$insertData);
+
+        if($payloadHash == $singatureHash) {
+            
+        }
+    }    
+}
+
+
 $connection = new Sql();
 $connectStr = $connection->connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
